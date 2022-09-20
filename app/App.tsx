@@ -11,7 +11,7 @@
 import React, { useMemo } from 'react';
 import { SafeAreaView, View } from 'react-native';
 
-import { DeviceId } from './components';
+import { DeviceId, CartCounter } from './components';
 import s from './App.style';
 
 const App = () => {
@@ -20,6 +20,8 @@ const App = () => {
   return (
     <SafeAreaView style={s.container}>
       <DeviceId />
+      {separator}
+      <CartCounter />
       {separator}
     </SafeAreaView>
   );
