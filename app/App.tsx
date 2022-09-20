@@ -8,13 +8,19 @@
  * @format
  */
 
-import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import React, { useMemo } from 'react';
+import { SafeAreaView, View } from 'react-native';
+
+import { DeviceId } from './components';
+import s from './App.style';
 
 const App = () => {
+  const separator = useMemo(() => <View style={s.separator} />, []);
+
   return (
-    <SafeAreaView>
-      <Text>Hello</Text>
+    <SafeAreaView style={s.container}>
+      <DeviceId />
+      {separator}
     </SafeAreaView>
   );
 };
