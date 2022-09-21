@@ -16,7 +16,11 @@ export default StyleSheet.create({
   deviceId: {
     color: colors.black,
     fontSize: 16,
-    letterSpacing: 4,
+    letterSpacing: 2,
+  },
+  error: {
+    color: colors.red,
+    fontSize: 12,
   },
 });
 

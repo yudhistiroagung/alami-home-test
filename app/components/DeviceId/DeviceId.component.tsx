@@ -5,16 +5,22 @@ import { useGetDeviceId } from '../../hooks';
 import s, { btnColor } from './DeviceId.style';
 
 const DeviceId = () => {
-  const { get, loading, deviceId } = useGetDeviceId();
+  const { get, deviceId, loading, error } = useGetDeviceId();
+
+  const errorMessage = useMemo(
+    () => <Text style={s.error}>Something went wrong, try again.</Text>,
+    [],
+  );
 
   const deviceInfo = useMemo(
     () => (
       <View>
         <Text style={s.label}>Device Unique ID</Text>
-        <Text style={s.deviceId}>{deviceId || '-'}</Text>
+        {error && errorMessage}
+        {!error && <Text style={s.deviceId}>{deviceId || '-'}</Text>}
       </View>
     ),
-    [deviceId],
+    [deviceId, error, errorMessage],
   );
 
   const activityIndicator = useMemo(() => <ActivityIndicator />, []);
