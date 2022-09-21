@@ -27,7 +27,7 @@ const DeviceId = () => {
   return (
     <View style={s.container}>
       {deviceInfo}
-      {!deviceId && button}
+      {!deviceId && !loading && button}
       {loading && activityIndicator}
     </View>
   );

@@ -14,7 +14,7 @@ interface ProgressBarProps {
 const ProgressBar: FC<ProgressBarProps> = ({ step, steps, height = 16 }) => {
   const width = useRef(new Animated.Value(0)).current;
 
-  const progress = (step / steps) * 100;
+  const progress = Math.round((step / steps) * 100);
 
   useEffect(() => {
     Animated.timing(width, {

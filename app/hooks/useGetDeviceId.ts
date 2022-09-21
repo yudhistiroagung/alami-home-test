@@ -1,5 +1,7 @@
 import { useCallback, useState } from 'react';
+
 import { DeviceInfo } from '../libs';
+import { delay } from '../utils';
 
 interface UseGetDeviceId {
   deviceId?: string;
@@ -18,6 +20,9 @@ const useGetDeviceId = (): UseGetDeviceId => {
     setError(false);
 
     try {
+      // give a user a nice loading state
+      await delay(2000);
+
       const res = await DeviceInfo.getDeviceUniqueId();
       setDeviceId(res);
       return res;

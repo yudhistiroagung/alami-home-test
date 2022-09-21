@@ -18,7 +18,6 @@ export default StyleSheet.create({
   },
   progressFill: {
     backgroundColor: colors.primary,
-    height: 16,
     borderRadius: 6,
   },
   progressText: {
