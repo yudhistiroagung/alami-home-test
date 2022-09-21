@@ -7,6 +7,7 @@ import s, { btnColor } from './CartCounter.style';
 
 const CartCounter = () => {
   const { count, increment, decrement } = useCartCounter();
+
   const spacer = useMemo(() => <View style={s.spacer} />, []);
 
   const incrementButton = useMemo(

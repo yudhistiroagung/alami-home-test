@@ -5,7 +5,8 @@ import { useGetDeviceId } from '../../hooks';
 import s, { btnColor } from './DeviceId.style';
 
 const DeviceId = () => {
-  const { get, loading, error, deviceId } = useGetDeviceId();
+  const { get, loading, deviceId } = useGetDeviceId();
+
   const deviceInfo = useMemo(
     () => (
       <View>
