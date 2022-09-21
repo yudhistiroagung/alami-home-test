@@ -1,28 +1,33 @@
 import React, { useMemo } from 'react';
-import { View, Text, Button } from 'react-native';
+import { ActivityIndicator, View, Text, Button } from 'react-native';
 
+import { useGetDeviceId } from '../../hooks';
 import s, { btnColor } from './DeviceId.style';
 
 const DeviceId = () => {
+  const { get, loading, error, deviceId } = useGetDeviceId();
   const deviceInfo = useMemo(
     () => (
       <View>
         <Text style={s.label}>Device Unique ID</Text>
-        <Text style={s.deviceId}>ASD-123123</Text>
+        <Text style={s.deviceId}>{deviceId || '-'}</Text>
       </View>
     ),
-    [],
+    [deviceId],
   );
 
+  const activityIndicator = useMemo(() => <ActivityIndicator />, []);
+
   const button = useMemo(
-    () => <Button color={btnColor} title="GET DEVICE ID" />,
-    [],
+    () => <Button onPress={get} color={btnColor} title="GET DEVICE ID" />,
+    [get],
   );
 
   return (
     <View style={s.container}>
       {deviceInfo}
-      {button}
+      {!deviceId && button}
+      {loading && activityIndicator}
     </View>
   );
 };
