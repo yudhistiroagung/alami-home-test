@@ -23,7 +23,7 @@ const App = () => {
       {separator}
       <CartCounter />
       {separator}
-      <ProgressBar />
+      <ProgressBar step={5} steps={10} />
     </SafeAreaView>
   );
 };

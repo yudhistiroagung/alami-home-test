@@ -1,39 +1,29 @@
-import React, { FunctionComponent, useRef, useEffect, useState } from 'react';
+import React, { FC, useRef, useEffect } from 'react';
 import { View, Text, Animated, Easing } from 'react-native';
 
 import s from './ProgressBar.style';
 
 const AnimatedView = Animated.View;
 
-const ProgressBar: FunctionComponent = () => {
-  const fillInterval = useRef<number | null>(null);
-  const [fill, setFill] = useState(0);
+interface ProgressBarProps {
+  step: number;
+  steps: number;
+  height?: number;
+}
+
+const ProgressBar: FC<ProgressBarProps> = ({ step, steps, height = 16 }) => {
   const width = useRef(new Animated.Value(0)).current;
 
-  useEffect(() => {
-    fillInterval.current = setInterval(() => {
-      setFill(prev => prev + 5);
-    }, 500);
-
-    return () => clearInterval(fillInterval.current ?? 0);
-  }, []);
+  const progress = (step / steps) * 100;
 
   useEffect(() => {
-    if (fill >= 100) {
-      setFill(100);
-      clearInterval(fillInterval.current ?? 0);
-    }
-  }, [fill]);
-
-  useEffect(() => {
-    const percent = fill / 100;
     Animated.timing(width, {
-      toValue: percent,
+      toValue: step / steps,
       duration: 300,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start();
-  }, [fill, width]);
+  }, [step, steps, width]);
 
   const widtInterpolate = width.interpolate({
     inputRange: [0, 1],
@@ -43,9 +33,11 @@ const ProgressBar: FunctionComponent = () => {
   return (
     <View style={s.container}>
       <View style={s.progressContainer}>
-        <AnimatedView style={[s.progressFill, { width: widtInterpolate }]} />
+        <AnimatedView
+          style={[s.progressFill, { height }, { width: widtInterpolate }]}
+        />
       </View>
-      <Text style={s.progressText}>{`${fill}%`}</Text>
+      <Text style={s.progressText}>{`${progress}%`}</Text>
     </View>
   );
 };
