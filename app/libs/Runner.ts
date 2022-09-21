@@ -15,7 +15,7 @@ class Runner {
     this.options = options;
   }
 
-  async run() {
+  private async run() {
     if (this.isRunning) {
       await delay(this.interval);
       this.options.onTick();
@@ -25,7 +25,7 @@ class Runner {
 
   start() {
     this.isRunning = true;
-    this.run();
+    setTimeout(() => this.run(), 1);
   }
 
   stop() {

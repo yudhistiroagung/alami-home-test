@@ -9,11 +9,17 @@ interface ProgressBarProps {
   step: number;
   steps: number;
   height?: number;
+  animationDuration?: number;
 }
 
-const TIMING_DURATION = 300;
+const TIMING_DURATION = 100;
 
-const ProgressBar: FC<ProgressBarProps> = ({ step, steps, height = 16 }) => {
+const ProgressBar: FC<ProgressBarProps> = ({
+  step,
+  steps,
+  height = 16,
+  animationDuration = TIMING_DURATION,
+}) => {
   const width = useRef(new Animated.Value(0)).current;
 
   const progress = Math.round((step / steps) * 100);
@@ -21,11 +27,11 @@ const ProgressBar: FC<ProgressBarProps> = ({ step, steps, height = 16 }) => {
   useEffect(() => {
     Animated.timing(width, {
       toValue: step / steps,
-      duration: TIMING_DURATION,
+      duration: animationDuration,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start();
-  }, [step, steps, width]);
+  }, [animationDuration, step, steps, width]);
 
   const widtInterpolate = width.interpolate({
     inputRange: [0, 1],

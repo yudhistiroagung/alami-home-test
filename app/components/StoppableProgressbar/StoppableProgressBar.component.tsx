@@ -1,15 +1,14 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Button } from 'react-native';
 
 import { Runner } from '../../libs';
 import { ProgressBar } from '../ProgressBar';
 
 const TOTAL_STEPS = 10;
-const PROGRESS_STEP = 0.5;
-const PROGRESS_INTERVAL = 500;
+const PROGRESS_STEP = 0.1;
+const PROGRESS_INTERVAL = 100;
 
 const StoppableProgressBar = () => {
-  const stepInterval = useRef<number | null>(null);
   const [step, setStep] = useState(0);
   const runner = useRef(
     new Runner(PROGRESS_INTERVAL, {
@@ -19,9 +18,12 @@ const StoppableProgressBar = () => {
     }),
   ).current;
 
-  const clearStepInterval = () => {
-    clearInterval(stepInterval.current || 0);
-  };
+  const isCompleted = step >= TOTAL_STEPS;
+
+  const reset = useCallback(() => {
+    setStep(() => 0);
+    runner.start();
+  }, [runner]);
 
   const onPressChange = useCallback(
     (isPressing: boolean) => () => {
@@ -43,16 +45,23 @@ const StoppableProgressBar = () => {
   useEffect(() => {
     if (step >= TOTAL_STEPS) {
       setStep(TOTAL_STEPS);
-      clearStepInterval();
+      runner.stop();
     }
-  }, [step]);
+  }, [runner, step]);
 
   return (
-    <TouchableOpacity
-      onPressIn={onPressChange(true)}
-      onPressOut={onPressChange(false)}>
-      <ProgressBar step={step} steps={TOTAL_STEPS} />
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity
+        onPressIn={onPressChange(true)}
+        onPressOut={onPressChange(false)}>
+        <ProgressBar
+          step={step}
+          steps={TOTAL_STEPS}
+          animationDuration={PROGRESS_INTERVAL}
+        />
+      </TouchableOpacity>
+      {isCompleted && <Button onPress={reset} title="RETRY" />}
+    </>
   );
 };
 
