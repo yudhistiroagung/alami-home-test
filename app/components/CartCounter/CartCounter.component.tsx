@@ -24,7 +24,9 @@ const CartCounter = () => {
     () => (
       <View style={s.cartContainer}>
         <Image style={s.cart} source={Images.CartIcon} resizeMode="contain" />
-        <Text style={s.countBadge}>{count}</Text>
+        <View style={s.badgeContainer}>
+          <Text style={s.badgeText}>{count}</Text>
+        </View>
       </View>
     ),
     [count],

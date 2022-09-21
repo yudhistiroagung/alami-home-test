@@ -18,18 +18,20 @@ export default StyleSheet.create({
   cartContainer: {
     padding: 4,
   },
-  countBadge: {
+  badgeContainer: {
     position: 'absolute',
     top: 0,
     right: 0,
-    height: 20,
     width: 20,
-    borderRadius: 14,
-    fontSize: 9,
+    height: 20,
+    borderRadius: 10,
     backgroundColor: colors.red,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badgeText: {
+    fontSize: 9,
     color: colors.white,
-    textAlignVertical: 'center',
-    textAlign: 'center',
   },
   cart: {
     width: 42,
