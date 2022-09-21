@@ -1,7 +1,7 @@
 # ALAMI HOME TEST PROJECT
 this project is a mandatory assigment for recruitment process
 
-###Features
+### Features
 [x] Get device id by making bridging module on android and ios
   [x] Android Module
   [] iOS Module
