@@ -11,6 +11,8 @@ interface ProgressBarProps {
   height?: number;
 }
 
+const TIMING_DURATION = 300;
+
 const ProgressBar: FC<ProgressBarProps> = ({ step, steps, height = 16 }) => {
   const width = useRef(new Animated.Value(0)).current;
 
@@ -19,7 +21,7 @@ const ProgressBar: FC<ProgressBarProps> = ({ step, steps, height = 16 }) => {
   useEffect(() => {
     Animated.timing(width, {
       toValue: step / steps,
-      duration: 300,
+      duration: TIMING_DURATION,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start();
