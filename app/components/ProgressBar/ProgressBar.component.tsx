@@ -33,7 +33,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
     }).start();
   }, [animationDuration, step, steps, width]);
 
-  const widtInterpolate = width.interpolate({
+  const widthInterpolate = width.interpolate({
     inputRange: [0, 1],
     outputRange: ['0%', '100%'],
   });
@@ -42,7 +42,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
     <View style={s.container}>
       <View style={s.progressContainer}>
         <AnimatedView
-          style={[s.progressFill, { height }, { width: widtInterpolate }]}
+          style={[s.progressFill, { height }, { width: widthInterpolate }]}
         />
       </View>
       <Text style={s.progressText}>{`${progress}%`}</Text>
