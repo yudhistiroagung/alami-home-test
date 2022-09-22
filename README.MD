@@ -4,7 +4,7 @@ This project is a mandatory assigment for recruitment process
 ### Features
 - [x] Get device id by making bridging module on android and ios
   - [x] Android Module
-  - [ ] iOS Module
+  - [x] iOS Module
 - [x] Create cart component that can increment/decrement cart count
 - [x] Make a progress bar that can be paused when user press the view
 
