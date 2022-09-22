@@ -38,4 +38,4 @@ yarn ios
 #### Screenshots
 Android                    |  IOS
 :-------------------------:|:-------------------------:
-<img src="https://drive.google.com/uc?export=view&id=1D-Rhw6pTDWqHaviOosIr5MeMxCRvMx17" alt="Android" style="width: 200px"/> | <img src="https://drive.google.com/uc?export=view&id=1mxuy9o8j_NBzZin5cUz67dx5VVDpdvuo" alt="Android" style="width: 200px"/>
+<img src="https://drive.google.com/uc?export=view&id=1D-Rhw6pTDWqHaviOosIr5MeMxCRvMx17" alt="Android" style="width: 200px"/> | <img src="https://drive.google.com/uc?export=view&id=1mxuy9o8j_NBzZin5cUz67dx5VVDpdvuo" alt="IOS" style="width: 200px"/>
