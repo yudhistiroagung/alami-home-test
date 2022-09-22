@@ -9,7 +9,9 @@ This project is a mandatory assigment for recruitment process
 - [x] Make a progress bar that can be paused when user press the view
 
 ## How to run the app
-After cloning the repo, please run the following commands
+> if you are new in React Native development, make sure you follow this [setup guideline](https://reactnative.dev/docs/environment-setup)
+
+After cloning the repo, please run the following commands to install projects dependencies
 ```
 yarn install
 ```
